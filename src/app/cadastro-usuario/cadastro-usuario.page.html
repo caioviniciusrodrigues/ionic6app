@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start" (click)="back()" >
+          <ion-back-button class="show-back-button"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">Novo Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>      
+      <ion-input type="text" formControlName="nome" id="nome"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.get('nome').valid && (form.get('nome').dirty || form.get('nome').touched)" color="danger">
+      <div [hidden]="!form.get('nome').errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" formControlName="login"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.get('login').valid && (form.get('login').dirty || form.get('login').touched)" color="danger">
+      <div [hidden]="!form.get('login').errors.required">
+        O campo é obrigatório
+      </div>
+      <br>
+      <div [hidden]="!form.get('login').hasError('email')">
+        E-mail inválido
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.get('password').valid && (form.get('password').dirty || form.get('password').touched)" color="danger">
+      <div [hidden]="!form.get('password').errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+ 
+    <div padding>
+      <br>
+      <ion-button expand="block" type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</ion-button>
+    </div>
+  </form>
+
+  <app-form-debug [form]="form"></app-form-debug>
+
+
+</ion-content>

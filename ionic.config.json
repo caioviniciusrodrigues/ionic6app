@@ -1,5 +1,7 @@
 {
   "name": "appGetProfissional",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

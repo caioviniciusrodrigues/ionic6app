@@ -8,27 +8,52 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'home',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+          }
+        ]
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'marcacao-ponto',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../marcacao-ponto/marcacao-ponto.module').then(m => m.MarcacaoPontoPageModule)
+          }
+        ]
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'view-marcacao',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../view-ponto/view-ponto.module').then(m => m.ViewPontoPageModule)
+          }
+        ]
+      }
+      ,
+      {
+        path: 'perfil',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
+          }
+        ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];

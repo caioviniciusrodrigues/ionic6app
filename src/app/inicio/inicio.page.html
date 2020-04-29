@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" >Bem Vindo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/cadastro-usuario']" expand="block" color="primary">Cadastre-se</ion-button>
+
+        <span class="divider line one-line">or</span>
+
+        <span class="already">Já é usuário?</span>
+
+        <ion-button [routerLink]="['/login']" expand="block" color="primary">Entrar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
