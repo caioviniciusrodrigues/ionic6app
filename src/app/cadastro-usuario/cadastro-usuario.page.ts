@@ -27,7 +27,6 @@ export class CadastroUsuarioPage implements OnInit {
     this.createForm();
   }
 
-
   createForm() {
     this.form = this.formBuilder.group({
       nome: [null, Validators.compose([Validators.required])],
@@ -36,29 +35,18 @@ export class CadastroUsuarioPage implements OnInit {
     });
   }
 
-  private createUser() {
-    this.usuario.nome = this.form.get('nome').value;
-    this.usuario.login = this.form.get('login').value;
-    this.usuario.password = this.form.get('password').value;
-    return this.usuario;
-  }
-
   onSubmit() {
     if (this.form.valid) {
-      this.salvarUsuario();
+      this.usuarioService.save(this.form.value).subscribe(
+        response => {
+          this.tostMessage('Registro salvo', 'success');
+          this.back();
+        },
+        error => {
+          this.tostMessage('Ocorreu falha', 'danger');
+          console.log(error);
+      });
     }
-  }
-
-  salvarUsuario() {
-    this.usuarioService.save(this.createUser()).subscribe(
-      response => {
-        this.tostMessage('Registro salvo', 'success');
-        this.back();
-      },
-      error => {
-        this.tostMessage('Ocorreu falha', 'danger');
-        console.log(error);
-    });
   }
 
   async tostMessage(mensagem, tipo) {
