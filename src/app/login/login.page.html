@@ -8,32 +8,57 @@
 </ion-header>
 
 
-<ion-content>
-  <ion-card class="ion-text-center">
-    <ion-card-header>
-      <ion-card-subtitle></ion-card-subtitle>
-      <ion-card-title></ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <form>
-        <ion-item lines="full">
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="text" required></ion-input>
-        </ion-item>
-    
-        <ion-item lines="full">
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" required></ion-input>
-        </ion-item>
-    
-        <ion-row>
-          <ion-col>
-            <ion-button type="submit" color="primary" expand="block">Entrar</ion-button>
-            <a [routerLink]="['/forgot-password']" class="small-text">Esqueceu a senha?</a>
-          </ion-col>
-        </ion-row>
-      </form>
-    </ion-card-content>
-  </ion-card>
+<ion-content class="auth-form ">
+  <ion-grid>
+    <ion-row>
+      <ion-col  align-self-center>
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title>Faça seu Login</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+              <ion-item>
+                <ion-label position="floating">E-mail</ion-label>
+                <ion-input type="email" formControlName="login"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!form.get('login').valid && (form.get('login').dirty || form.get('login').touched)" color="danger">
+                <div [hidden]="!form.get('login').errors.required">
+                  O campo é obrigatório
+                </div>
+                <br>
+                <div [hidden]="!form.get('login').hasError('email')">
+                  E-mail inválido
+                </div>
+              </ion-item>
+
+
+              <ion-item>
+                <ion-label position="floating">Senha</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="!form.get('password').valid && (form.get('password').dirty || form.get('password').touched)" color="danger">
+                <div [hidden]="!form.get('password').errors.required">
+                  O campo é obrigatório
+                </div>
+              </ion-item>
+
+              <br>
+              <ion-button class="flipOutX" expand="block" type="submit" [disabled]="!form.valid" >Logar</ion-button>
+            </form>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar  color="primary">
+    <ion-title class="ion-text-center">Versão: 1.0.0.0</ion-title>
+  </ion-toolbar>
+</ion-footer>

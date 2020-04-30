@@ -1,24 +1,30 @@
 <ion-header>
-  <ion-toolbar class="ion-text-center" color="primary">
-    <ion-title>Solicitações</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Relatório</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="power-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button color="secondary">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-header>
-<ion-content>
-  <ion-card>
-    <ion-card-title>
-      Criar um novo aplicativo bem bacana
-    </ion-card-title>
-    <ion-card-subtitle>
-      Software e Aplicativo
-    </ion-card-subtitle>
-    <ion-card-content>
-      Gostaria de criar um aplicativo bem bacana feito em ionic 4/5 e bem estilso ...
-    </ion-card-content>
-  </ion-card>
 
+<ion-content>
+  <!-- List Headers in Lists -->
+  <ion-list>
+    <ion-list-header lines="inset">
+      <ion-label>Recent</ion-label>
+      <ion-button>Clear</ion-button>
+    </ion-list-header>
+    <ion-item lines="none">
+      <ion-label color="primary">
+        <h1>Dia: 30/04/2020</h1>
+        <ul>
+          <li>08:00</li>
+          <li>08:00</li>
+          <li>08:00</li>
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

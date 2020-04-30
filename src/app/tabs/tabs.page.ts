@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -7,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  perfil: string = localStorage.getItem('appgetprofissional:perfil');
+  logado = localStorage.getItem('usuario.logado');
 
-  constructor() {}
+  constructor(private router: Router) { 
+    (this.logado) == 'sim' ? '' : this.router.navigate(['/']);
+  }
 
 }

@@ -23,7 +23,7 @@ export class CadastroUsuarioPage implements OnInit {
     private formBuilder: FormBuilder,
     ) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.createForm();
   }
 

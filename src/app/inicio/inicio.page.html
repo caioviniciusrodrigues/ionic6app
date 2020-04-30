@@ -4,18 +4,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="auth-form">
+<ion-content class="auth-form"> 
   <ion-grid>
-    <ion-row>
+    <ion-row>      
       <ion-col align-self-center>
-        <ion-button [routerLink]="['/cadastro-usuario']" expand="block" color="primary">Cadastre-se</ion-button>
+        <h1 class="flipOutX ion-text-center">O App do ponto</h1>
+        
+        <div class="logo ion-text-center">
+          <ion-img  style="width:50%" src="../../assets/img/logo.jpg"></ion-img>
+        </div>
+
+        <ion-button class="flipOutX" [routerLink]="['/cadastro-usuario']" expand="block" color="primary">Cadastre-se</ion-button>
 
         <span class="divider line one-line">or</span>
 
         <span class="already">Já é usuário?</span>
 
-        <ion-button [routerLink]="['/login']" expand="block" color="primary">Entrar</ion-button>
+        <ion-button class="flipOutX" [routerLink]="['/login']" expand="block" color="primary">Entrar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar  color="primary">
+    <ion-title class="ion-text-center">Versão: 1.0.0.0</ion-title>
+  </ion-toolbar>
+</ion-footer>

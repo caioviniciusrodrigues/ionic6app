@@ -1,11 +1,11 @@
 ion-content {
     --background: var(--ion-color-tertiary);
   }
-  ion-fab {
-    margin-top: 17px;
-  }
   
   ion-card {
+    flex:1;
+    align-items: center;
+    align-content: center;
     --background: linear-gradient(to bottom, #fcfcfc 0%,#e4e4e4 100%);
     margin: 20px;
     padding: 10px;
@@ -22,3 +22,10 @@ ion-content {
       padding-inline-end: 0px;
     }
   }
+
+  .auth-form ion-grid,
+.auth-form ion-row {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}

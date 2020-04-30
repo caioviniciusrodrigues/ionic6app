@@ -45,11 +45,15 @@
  
     <div padding>
       <br>
-      <ion-button expand="block" type="submit" [disabled]="!form.valid">Salvar</ion-button>
+      <ion-button class="flipOutX" expand="block" type="submit" [disabled]="!form.valid">Salvar</ion-button>
     </div>
   </form>
 
   <!--<app-form-debug [form]="form"></app-form-debug>-->
-
-
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar  color="primary">
+    <ion-title class="ion-text-center">Versão: 1.0.0.0</ion-title>
+  </ion-toolbar>
+</ion-footer>
