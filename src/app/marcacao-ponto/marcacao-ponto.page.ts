@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-marcacao-ponto',
@@ -9,19 +8,13 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 })
 export class MarcacaoPontoPage implements OnInit {
 
-  constructor(private router: Router, private camera: Camera) { }
+  constructor(private router: Router) { }
 
   today = Date.now();
 
   ngOnInit() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    };
+
   }
-  
 
   logout() {
     localStorage.removeItem('token');
