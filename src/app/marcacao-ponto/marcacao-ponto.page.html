@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar color="primary">
     <ion-title class="ion-text-center">Marcar Ponto</ion-title>   
     <ion-buttons slot="end">
@@ -9,8 +9,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <h1 class="ion-text-center">{{ today | date: 'dd/MM/yyyy HH:mm' }}</h1> 
 <br>
+<div class="botaoFoto">
+  <ion-fab-button (click)="takePicture()">
+    <ion-icon name="camera"></ion-icon>
+  </ion-fab-button>
+</div>
+<br>
+<div *ngIf="capturouFoto">
+  <img [src]="photo" >
+  <br>
+  <ion-button class="flipOutX" expand="block" color="primary">Registrar Ponto</ion-button>
+</div>
 
 </ion-content>

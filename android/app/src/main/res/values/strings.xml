@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">appGetProfissional</string>
+    <string name="title_activity_main">appGetProfissional</string>
+    <string name="package_name">br.com.caio.ponto.digital</string>
+    <string name="custom_url_scheme">br.com.caio.ponto.digital</string>
+</resources>
