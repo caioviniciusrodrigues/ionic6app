@@ -58,12 +58,15 @@ export class MarcacaoPontoPage implements OnInit {
 
 
   registerPonto() {
+
+    var dataHora = new Date();
+
     const ponto: Ponto = {
       usuario : localStorage.getItem('usuario.codigo'),
       nome : localStorage.getItem('usuario.nome'),
       login : localStorage.getItem('usuario.login'),
-      datahora : new Date().toLocaleString(),
-      timezone : '3',
+      datahora : dataHora.toISOString(),
+      timezone : new String(dataHora.getTimezoneOffset() * -1).toString(),
       foto : this.photoJson,
       latitude : this.location.coords.latitude,
       longitude : this.location.coords.longitude,
