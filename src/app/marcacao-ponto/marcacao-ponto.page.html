@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <h1 class="ion-text-center">{{ today | date: 'dd/MM/yyyy HH:mm' }}</h1> 
+  <h1 class="ion-text-center">{{ today | date: 'dd/MM/yyyy' }} {{hora}}</h1> 
 <br>
 <div class="botaoFoto">
   <ion-fab-button (click)="takePicture()">

@@ -15,14 +15,21 @@ export class MarcacaoPontoPage implements OnInit {
 
   photoJson: string;
 
+  hora: string;
+
   location: GeolocationPosition;
+
+  horaAtual(): string {
+    const momentoAtual = new Date();
+    return momentoAtual.getHours() + ':' + momentoAtual.getMinutes() + ':' + momentoAtual.getSeconds();
+  }
 
   constructor(
     private router: Router, 
     private sanitizer: DomSanitizer,
     private marcacaoPontoService: MarcacaoPontoService,
     public toastController: ToastController,
-    ) { }
+    ) {}
 
   photo: SafeResourceUrl;
 
@@ -30,14 +37,17 @@ export class MarcacaoPontoPage implements OnInit {
 
   today = Date.now();
 
-  ngOnInit() {    
-    this.getCurrentPosition();
+  ngOnInit() {
+    setTimeout(() => {
+      this.hora = this.horaAtual();
+    }, 1000);
   }
 
   async getCurrentPosition() {
     const coordinates = await Geolocation.getCurrentPosition();
     this.location = coordinates;
   }
+
 
   async takePicture() {
     const image = await Plugins.Camera.getPhoto({
