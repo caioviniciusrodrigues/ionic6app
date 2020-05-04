@@ -5,8 +5,8 @@ export interface Ponto {
     datahora: string;
     timezone: string;
     foto: string;
-    latitude: number;
-    longitude: number;
+    latitude: string;
+    longitude: string;
     localizacao: string;
     macaddress: string;
     appversion: string;

@@ -38,6 +38,7 @@ export class MarcacaoPontoPage implements OnInit {
   today = Date.now();
 
   ngOnInit() {
+    console.log(this.getCurrentPosition());
     setTimeout(() => {
       this.hora = this.horaAtual();
     }, 1000);
@@ -51,9 +52,9 @@ export class MarcacaoPontoPage implements OnInit {
 
   async takePicture() {
     const image = await Plugins.Camera.getPhoto({
-      quality: 50,
-      height: 100,
-      width: 100,
+      quality: 60,
+      height: 400,
+      width: 300,
       direction: CameraDirection.Front,
       allowEditing: false,
       resultType: CameraResultType.DataUrl,
@@ -78,8 +79,8 @@ export class MarcacaoPontoPage implements OnInit {
       datahora : dataHora.toISOString(),
       timezone : new String(dataHora.getTimezoneOffset() * -1).toString(),
       foto : this.photoJson,
-      latitude : this.location.coords.latitude,
-      longitude : this.location.coords.longitude,
+      latitude : new String(this.location.coords.latitude).toString(),
+      longitude : new String(this.location.coords.longitude).toString(),
       localizacao : '',
       macaddress : '127.0.0.1',
       appversion : '1.0.0.0',
@@ -90,6 +91,8 @@ export class MarcacaoPontoPage implements OnInit {
       mcc : '0.00',
       mnc : '0.00'
     };
+
+    console.log(ponto);
 
     this.marcacaoPontoService.registrarPonto(ponto).subscribe(
       (response) => {
