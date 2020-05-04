@@ -30,7 +30,7 @@ export class MarcacaoPontoPage implements OnInit {
 
   today = Date.now();
 
-  ngOnInit() {
+  ngOnInit() {    
     this.getCurrentPosition();
   }
 
@@ -62,7 +62,7 @@ export class MarcacaoPontoPage implements OnInit {
       usuario : localStorage.getItem('usuario.codigo'),
       nome : localStorage.getItem('usuario.nome'),
       login : localStorage.getItem('usuario.login'),
-      datahora : '2019-06-11T09:45:32.000-0300',
+      datahora : new Date().toLocaleString(),
       timezone : '3',
       foto : this.photoJson,
       latitude : this.location.coords.latitude,
