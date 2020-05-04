@@ -20,11 +20,9 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#FF7F00');
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
-
-      localStorage.setItem('appgetprofissional:perfil', 'cliente');
-
     });
   }
 }

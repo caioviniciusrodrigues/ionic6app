@@ -15,5 +15,7 @@
       "SplashScreen": "screen",
       "SplashScreenDelay": "3000"
     }
-  }
+  },
+  
+    "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh"
 }
