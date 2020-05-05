@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Plugins, CameraResultType, CameraSource, CameraDirection, Geolocation, GeolocationPosition } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MarcacaoPontoService } from './marcacao-ponto.service';
 import { ToastController } from '@ionic/angular';
 import { Ponto } from './ponto';
-import { Location } from '@angular/common';
 import { Clock } from './clock.model';
 import { ClockService } from './clock.service';
 
@@ -30,11 +29,6 @@ export class MarcacaoPontoPage implements OnInit {
 
   clock: Clock;
 
-  horaAtual(): string {
-    const momentoAtual = new Date();
-    return momentoAtual.getHours() + ':' + momentoAtual.getMinutes() + ':' + momentoAtual.getSeconds();
-  }
-
   constructor(
     private router: Router, 
     private sanitizer: DomSanitizer,
@@ -47,9 +41,6 @@ export class MarcacaoPontoPage implements OnInit {
 
   ngOnInit() {
     this.getCurrentPosition();
-    setTimeout(() => {
-      this.hora = this.horaAtual();
-    }, 1000);
   }
 
   ionViewDidEnter() {
@@ -80,7 +71,7 @@ export class MarcacaoPontoPage implements OnInit {
   }
 
 
-  registerPonto() {
+  registraPonto() {
 
     var dataHora = new Date();
 
@@ -104,7 +95,7 @@ export class MarcacaoPontoPage implements OnInit {
       mnc : '0.00'
     };
 
-    console.log(ponto);
+//    console.log(ponto);
 
     this.marcacaoPontoService.registrarPonto(ponto).subscribe(
       (response) => {

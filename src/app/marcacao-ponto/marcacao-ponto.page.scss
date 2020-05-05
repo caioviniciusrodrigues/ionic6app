@@ -1,8 +1,22 @@
 
-  .foto {    
+  .botaoCamera {    
     display: flex;
     align-content: center;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    align-items: center;    
   }
+
+
+  .boxFoto {    
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;    
+  }
+
+  .boxFoto img {
+    max-width:300px;
+    max-height:250px;
+    width: auto;
+    height: auto;
+}

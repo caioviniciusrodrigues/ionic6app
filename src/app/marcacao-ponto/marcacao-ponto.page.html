@@ -9,25 +9,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content overflow-scroll="true" fullscreen>
   <h2 class="ion-text-center"> {{clock}} </h2>
-<br>
+<br>  
+    <div class="botaoCamera">
+      <ion-fab-button (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </div>
 
-<div class="foto">
-  <ion-fab-button (click)="takePicture()">
-    <ion-icon name="camera"></ion-icon>
-  </ion-fab-button>
-</div>
-
-<br>
-<div class="foto"  *ngIf="mostraFoto">
-  <img [src]="photo" >  
-</div>
-
+    <br>
+    <div class="boxFoto" *ngIf="mostraFoto">
+      <img [src]="photo" >  
+    </div>  
 </ion-content>
 
 <ion-footer class="ion-no-border">
   <ion-toolbar  color="primary">
-    <ion-button [disabled]="!mostraFoto" expand="block" color="primary" (click)="registerPonto()">Registrar Ponto</ion-button>    
+    <ion-button [disabled]="!mostraFoto" expand="block" color="primary" (click)="registraPonto()">Registrar Ponto</ion-button>    
   </ion-toolbar>
 </ion-footer>
