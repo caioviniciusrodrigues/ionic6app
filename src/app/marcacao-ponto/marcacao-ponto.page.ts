@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Plugins, CameraResultType, CameraSource, CameraDirection, Geolocation, GeolocationPosition } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MarcacaoPontoService } from './marcacao-ponto.service';
 import { ToastController } from '@ionic/angular';
 import { Ponto } from './ponto';
+import { Location } from '@angular/common';
+import { Clock } from './clock.model';
+import { ClockService } from './clock.service';
 
 @Component({
   selector: 'app-marcacao-ponto',
@@ -19,6 +22,14 @@ export class MarcacaoPontoPage implements OnInit {
 
   location: GeolocationPosition;
 
+  photo: SafeResourceUrl;
+
+  mostraFoto: boolean = false;
+
+  today = Date.now();
+
+  clock: Clock;
+
   horaAtual(): string {
     const momentoAtual = new Date();
     return momentoAtual.getHours() + ':' + momentoAtual.getMinutes() + ':' + momentoAtual.getSeconds();
@@ -28,20 +39,21 @@ export class MarcacaoPontoPage implements OnInit {
     private router: Router, 
     private sanitizer: DomSanitizer,
     private marcacaoPontoService: MarcacaoPontoService,
-    public toastController: ToastController,
-    ) {}
-
-  photo: SafeResourceUrl;
-
-  capturouFoto: boolean = false;
-
-  today = Date.now();
+    private toastController: ToastController,
+    clockService: ClockService
+    ) {
+      clockService.GenerateTimeNow(1000, clock => this.clock = clock);
+    }
 
   ngOnInit() {
-    console.log(this.getCurrentPosition());
+    this.getCurrentPosition();
     setTimeout(() => {
       this.hora = this.horaAtual();
     }, 1000);
+  }
+
+  ionViewDidEnter() {
+    this.router.navigate(['/tabs/marcacao-ponto']);
   }
 
   async getCurrentPosition() {
@@ -61,7 +73,7 @@ export class MarcacaoPontoPage implements OnInit {
       source: CameraSource.Camera
     });
 
-    this.capturouFoto = true;
+    this.mostraFoto = true;
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
 
     this.photoJson = image.dataUrl.substring(image.dataUrl.indexOf(',') + 1 );
@@ -97,6 +109,9 @@ export class MarcacaoPontoPage implements OnInit {
     this.marcacaoPontoService.registrarPonto(ponto).subscribe(
       (response) => {
         this.tostMessage('Ponto Registrado', 'success');
+        setTimeout(() => {
+            this.mostraFoto = false;
+        }, 3000);
       },
       (error) => {
         this.tostMessage('Falha ao registrar ponto', 'danger');
@@ -108,7 +123,7 @@ export class MarcacaoPontoPage implements OnInit {
   async tostMessage(mensagem, tipo) {
     const toast = await this.toastController.create({
       message: mensagem,
-      duration: 3000,
+      duration: 2000,
       color: tipo,
       position: 'top'
     });

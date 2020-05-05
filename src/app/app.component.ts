@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,18 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
+
+    if(localStorage.getItem('usuario.logado') === 'sim' ) {
+      this.router.navigate(['/tabs/home']);
+    }
+
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#08b8f0');
       this.statusBar.styleLightContent();

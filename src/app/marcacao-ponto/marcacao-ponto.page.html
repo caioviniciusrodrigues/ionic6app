@@ -10,18 +10,24 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <h1 class="ion-text-center">{{ today | date: 'dd/MM/yyyy' }} {{hora}}</h1> 
+  <h2 class="ion-text-center"> {{clock}} </h2>
 <br>
+
 <div class="foto">
   <ion-fab-button (click)="takePicture()">
     <ion-icon name="camera"></ion-icon>
   </ion-fab-button>
 </div>
+
 <br>
-<div *ngIf="capturouFoto">
-  <img class="foto" [src]="photo" >
-  <br>
-  <ion-button class="flipOutX" expand="block" color="primary" (click)="registerPonto()">Registrar Ponto</ion-button>
+<div class="foto"  *ngIf="mostraFoto">
+  <img [src]="photo" >  
 </div>
 
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar  color="primary">
+    <ion-button [disabled]="!mostraFoto" expand="block" color="primary" (click)="registerPonto()">Registrar Ponto</ion-button>    
+  </ion-toolbar>
+</ion-footer>
