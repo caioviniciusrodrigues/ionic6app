@@ -8,6 +8,7 @@ import { Ponto } from './ponto';
 import { Clock } from './clock.model';
 import { ClockService } from './clock.service';
 
+
 @Component({
   selector: 'app-marcacao-ponto',
   templateUrl: './marcacao-ponto.page.html',
@@ -119,16 +120,6 @@ export class MarcacaoPontoPage implements OnInit {
       position: 'top'
     });
     toast.present();
-  }
-
-
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('usuario.codigo');
-    localStorage.removeItem('usuario.nome');
-    localStorage.removeItem('usuario.login');
-    localStorage.removeItem('usuario.logado');
-    this.router.navigate(['/']);
   }
 
 

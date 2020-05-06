@@ -1,3 +1,4 @@
+import { Util } from './../utils/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -22,7 +23,7 @@ export class LoginPage implements OnInit {
   authBio: FingerPrintAuth;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private auth: AuthService,
     private toastController: ToastController,
     private formBuilder: FormBuilder
@@ -32,6 +33,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.form.controls['login'].setValue(localStorage.getItem('usuario.login'));
   }
 
   async isAvailable() {
@@ -69,6 +71,7 @@ export class LoginPage implements OnInit {
   }
 
   private createUserLogin() {
+    this.usuario = new Usuario();
     this.usuario.login = this.form.get('login').value;
     this.usuario.password = this.form.get('password').value;
     return this.usuario;
@@ -77,13 +80,10 @@ export class LoginPage implements OnInit {
   onSubmit() {
     if (this.form.valid) {
 
-        localStorage.removeItem('token');
-        localStorage.removeItem('usuario.codigo');
-        localStorage.removeItem('usuario.nome');
-        localStorage.removeItem('usuario.login');
-        localStorage.removeItem('usuario.logado');
+        const logout = new Util();
+        //logout.logout();
 
-        this.auth.logar(this.form.value).subscribe(
+        this.auth.logar(this.createUserLogin()).subscribe(
           response => {
             localStorage.setItem('token', response['token']);
             localStorage.setItem('usuario.codigo', response['usuario']['codigo']);
@@ -94,11 +94,7 @@ export class LoginPage implements OnInit {
           },
           error => {
             this.erro = true;
-            localStorage.removeItem('token');
-            localStorage.removeItem('usuario.codigo');
-            localStorage.removeItem('usuario.nome');
-            localStorage.removeItem('usuario.login');
-            localStorage.removeItem('usuario.logado');
+            logout.logout();
             this.form.reset();
           }
         );

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CadastroUsuarioPageRoutingModule } from './cadastro-usuario-routing.module';
 
 import { CadastroUsuarioPage } from './cadastro-usuario.page';
-import { FormDebugComponent } from '../form-debug/form-debug.component';
+import { SharedModule } from '../shared-components/shared.module';
 
 
 @NgModule({
@@ -16,8 +16,9 @@ import { FormDebugComponent } from '../form-debug/form-debug.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    CadastroUsuarioPageRoutingModule
+    CadastroUsuarioPageRoutingModule,
+    SharedModule
   ],
-  declarations: [CadastroUsuarioPage, FormDebugComponent]
+  declarations: [CadastroUsuarioPage]
 })
 export class CadastroUsuarioPageModule {}

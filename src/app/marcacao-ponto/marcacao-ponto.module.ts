@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MarcacaoPontoPageRoutingModule } from './marcacao-ponto-routing.module';
 
 import { MarcacaoPontoPage } from './marcacao-ponto.page';
+import { SharedModule } from '../shared-components/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MarcacaoPontoPageRoutingModule
+    MarcacaoPontoPageRoutingModule,
+    SharedModule
   ],
   declarations: [MarcacaoPontoPage]
 })

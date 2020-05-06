@@ -22,7 +22,10 @@ export class AppComponent {
 
   initializeApp() {
 
-    if(localStorage.getItem('usuario.logado') === 'sim' ) {
+    //Se nao tem token
+    if( localStorage.getItem('token') === null ) {
+      this.router.navigate(['/']);
+    } else {
       this.router.navigate(['/tabs/home']);
     }
 

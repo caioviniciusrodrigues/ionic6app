@@ -1,13 +1,4 @@
-<ion-header translucent>
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Registrar Ponto</ion-title>   
-    <ion-buttons slot="end">
-      <ion-button (click)="logout()">
-        <ion-icon name="power-sharp"></ion-icon>    
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-cabecalho title="Registra Ponto"></app-cabecalho>
 
 <ion-content fullscreen class="no-scroll ion-text-center">
   <h2 class="ion-text-center"> {{clock}} </h2>
@@ -28,7 +19,7 @@
 <ion-footer class="ion-no-border" *ngIf="mostraFoto"> 
   <ion-toolbar  color="primary">
     <ion-title class="ion-text-center">
-      <ion-button [disabled]="!mostraFoto" expand="block" class="botaoRegistraPonto animated bounce delay-2s" color="primary" (click)="registraPonto()">Registrar Ponto</ion-button>    
+      <ion-button [disabled]="!mostraFoto" expand="block" class="botaoRegistraPonto animated bounce" color="primary" (click)="registraPonto()">Registrar Ponto</ion-button>    
     </ion-title>
   </ion-toolbar>
 </ion-footer>

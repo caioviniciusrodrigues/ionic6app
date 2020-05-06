@@ -8,18 +8,15 @@ import { Router } from '@angular/router';
 })
 export class ViewPontoPage implements OnInit {
 
+  periodoData: Date = new Date();
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
- 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('usuario.codigo');
-    localStorage.removeItem('usuario.nome');
-    localStorage.removeItem('usuario.login');
-    localStorage.removeItem('usuario.logado');
-    this.router.navigate(['/']);
+
+  mudarDate(event) {
+    console.log('ionChange', event.details);
   }
 
 }
