@@ -5,6 +5,9 @@ import { Usuario } from '../cadastro-usuario/usuario';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 
+import { FingerPrintAuth } from 'capacitor-fingerprint-auth';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,15 +19,38 @@ export class LoginPage implements OnInit {
   usuario: Usuario;
   erro = false;
 
+  authBio: FingerPrintAuth;
+
   constructor(
     private router: Router, 
     private auth: AuthService,
     private toastController: ToastController,
     private formBuilder: FormBuilder
-    ) { }
+    ) {
+      this.authBio = new FingerPrintAuth();
+     }
 
   ngOnInit() {
     this.createForm();
+  }
+
+  async isAvailable() {
+    await this.authBio.available();
+  }
+
+  async verify() {
+    try {
+      await this.authBio.verify();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async verifyWithFallback() {
+    try {
+      this.authBio.verifyWithFallback();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   createForm() {

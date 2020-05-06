@@ -48,6 +48,11 @@
 
               <br>
               <ion-button class="flipOutX" expand="block" type="submit" [disabled]="!form.valid" >Logar</ion-button>
+
+              <ion-button ion-button (click)="isAvailable()">isAvailable</ion-button>
+              <ion-button ion-button (click)="verify()">Verify</ion-button>
+              <ion-button ion-button (click)="verifyWithFallback()">Verify with fallback</ion-button>
+
             </form>
 
           </ion-card-content>
