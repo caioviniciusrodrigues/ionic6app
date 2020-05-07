@@ -5,8 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Usuario } from '../cadastro-usuario/usuario';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
-
-import { FingerPrintAuth } from 'capacitor-fingerprint-auth';
+import { Plugins } from '@capacitor/core';
 
 
 @Component({
@@ -19,39 +18,38 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   usuario: Usuario;
   erro = false;
-
-  authBio: FingerPrintAuth;
-
-  constructor(
+  
+   constructor(
     private router: Router,
     private auth: AuthService,
     private toastController: ToastController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
     ) {
-      this.authBio = new FingerPrintAuth();
+
      }
 
   ngOnInit() {
     this.createForm();
     this.form.controls['login'].setValue(localStorage.getItem('usuario.login'));
+
+    this.bio();
   }
 
-  async isAvailable() {
-    await this.authBio.available();
-  }
+  
+  async bio() {
+    const { BiometricAuth } = Plugins;
 
-  async verify() {
-    try {
-      await this.authBio.verify();
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  async verifyWithFallback() {
-    try {
-      this.authBio.verifyWithFallback();
-    } catch (error) {
-      console.log(error);
+    const available = await BiometricAuth.isAvailable()
+
+    if (available.has) {
+      const authResult = await BiometricAuth.verify({reason: "Message ..."});
+      if (authResult.verified) {
+        console.log('Sucesso');
+      } else {
+        console.log('Falhou');
+      }
+    } else {
+      console.log('Senao nao tem bio');
     }
   }
 
