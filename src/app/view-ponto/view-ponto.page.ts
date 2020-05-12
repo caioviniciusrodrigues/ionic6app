@@ -37,7 +37,7 @@ export class ViewPontoPage implements OnInit {
     const dataFim = new Date(this.dataFim);
 
     this.filtrado = this.marcacoes.filter( item => {
-      return isWithinInterval(new Date(item.data), dataInicio)
+    //  return isWithinInterval(new Date(item.data), dataInicio)
     });
 
   }
