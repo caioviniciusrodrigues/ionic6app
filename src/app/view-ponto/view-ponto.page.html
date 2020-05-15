@@ -7,6 +7,10 @@
       <ion-label>Período de Marcações</ion-label>
     </ion-list-header>
 
+    <ion-label>Date</ion-label>
+    <ion-input [(ngModel)]="selectedDate" (click)="selectDate()"></ion-input>    
+    <ion-label>{{selectedDate}}</ion-label>
+
     <ion-item>
       <ion-label>Data Início</ion-label>
       <ion-datetime (ionChange)="load()" display-format="DD MM YYYY" cancelText="cancelar" ([ngModel])="dataInicio"></ion-datetime>
