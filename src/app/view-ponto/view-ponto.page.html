@@ -1,34 +1,7 @@
-<app-cabecalho title="Marcações"></app-cabecalho>
+<app-cabecalho title="Relatório"></app-cabecalho>
 
 <ion-content fullscreen>
-  <ion-list>
-
-    <ion-list-header>
-      <ion-label>Período de Marcações</ion-label>
-    </ion-list-header>
-
-    <ion-item>
-      <ion-label>Data Início</ion-label>
-      <ion-datetime (ionChange)="load()" display-format="DD MM YYYY" cancelText="cancelar" ([ngModel])="dataInicio"></ion-datetime>
-    </ion-item>      
-    <ion-item>
-      <ion-label>Data Fim</ion-label>
-      <ion-datetime (ionChange)="load()" display-format="DD MM YYYY" cancelText="cancelar" ([ngModel])="dataFim"></ion-datetime>
-    </ion-item>
-
-    <div class="ion-text-center" style="color: red;" *ngIf="dataInvalida">
-      Selecione corretamente as datas!
-    </div>
-
-  </ion-list>
-
-  <ion-list *ngIf="!dataInvalida">
-    <ion-item *ngFor="let item of marcacoes" >
-      <h2>{{item.nome}}</h2>
-      <br><br>
-      <h3>{{item.data}}</h3>
-    </ion-item>
-  </ion-list>
+ 
 
 
 </ion-content>

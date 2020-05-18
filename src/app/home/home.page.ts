@@ -8,18 +8,19 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
+  label;
+
+  i = 1;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('usuario.codigo');
-    localStorage.removeItem('usuario.nome');
-    localStorage.removeItem('usuario.login');
-    localStorage.removeItem('usuario.logado');
-    this.router.navigate(['/']);
+  changeLabel() {
+    this.label = 'MUDOU LABEL ' + this.i++;
   }
+
+
 
 }
