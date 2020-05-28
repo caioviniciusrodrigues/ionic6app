@@ -7,10 +7,11 @@
     margin: 20px;
     padding: 10px;
     border-radius: 20px;
-
+    
     ion-card-title {
       font-size: 1.2rem;
       line-height: 30px;
+      font-weight: bold;
     }
     ion-card-subtitle {
       line-height: 20px;
@@ -36,6 +37,6 @@
 .btnCorFundo {
   
   font-weight: bold ; 
-  --color: var(--ion-color-secondary-contrast);
-  --background: #ffd200;
+  --color: var(-ion-color-primary-contrast);
+  --background: #000;
 }

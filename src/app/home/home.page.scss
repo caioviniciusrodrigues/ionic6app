@@ -6,9 +6,11 @@
     --background: linear-gradient(to bottom, #fcfcfc 0%,#e4e4e4 100%);
     margin: 20px;
     padding: 10px;
+    border-radius: 15px !important;
     ion-card-title {
       font-size: 1.2rem;
       line-height: 30px;
+      font-weight: bold;
     }
     ion-card-subtitle {
       line-height: 20px;

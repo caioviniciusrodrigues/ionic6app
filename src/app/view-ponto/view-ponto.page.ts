@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ViewPontoPage implements OnInit {
 
-<<<<<<< HEAD
+
   dataInicio;
   dataFim;
 
@@ -40,14 +40,14 @@ export class ViewPontoPage implements OnInit {
     this.filtrado = this.marcacoes.filter( item => {
     //  return isWithinInterval(new Date(item.data), dataInicio)
     });
-=======
+  }
   constructor(private router: Router) { 
->>>>>>> 0fa90494718b32b77b546ac70bc5001da808ab9f
+
 
   }
-
   
   ngOnInit() {
+
   }
 
  
