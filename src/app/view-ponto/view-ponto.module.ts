@@ -9,6 +9,9 @@ import { ViewPontoPageRoutingModule } from './view-ponto-routing.module';
 import { ViewPontoPage } from './view-ponto.page';
 import { SharedModule } from '../shared-components/shared.module';
 
+import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
+
+
 
 @NgModule({
   imports: [
@@ -16,6 +19,7 @@ import { SharedModule } from '../shared-components/shared.module';
     FormsModule,
     IonicModule,
     ViewPontoPageRoutingModule,
+    Ionic4DatepickerModule,
     SharedModule
   ],
   declarations: [ViewPontoPage]

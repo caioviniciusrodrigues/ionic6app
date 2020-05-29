@@ -1,7 +1,15 @@
 <app-cabecalho title="Relatório"></app-cabecalho>
 
-<ion-content fullscreen>
- 
-
-
-</ion-content>
+<ion-content padding>
+   
+    <ion-grid>
+      <ion-row>
+          <ion-col>
+            <li-ionic4-datepicker [(ngModel)]="mydate1" [inputDateConfig]="datePickerObj"></li-ionic4-datepicker>
+          </ion-col>
+          <ion-col>
+            <li-ionic4-datepicker [(ngModel)]="mydate2" [inputDateConfig]="datePickerObj"></li-ionic4-datepicker>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
