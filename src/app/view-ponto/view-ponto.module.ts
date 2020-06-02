@@ -9,8 +9,11 @@ import { ViewPontoPageRoutingModule } from './view-ponto-routing.module';
 import { ViewPontoPage } from './view-ponto.page';
 import { SharedModule } from '../shared-components/shared.module';
 
-import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
     FormsModule,
     IonicModule,
     ViewPontoPageRoutingModule,
-    Ionic4DatepickerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
     SharedModule
   ],
   declarations: [ViewPontoPage]

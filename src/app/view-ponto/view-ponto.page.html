@@ -1,15 +1,24 @@
 <app-cabecalho title="Relatório"></app-cabecalho>
 
-<ion-content padding>
-   
-    <ion-grid>
-      <ion-row>
-          <ion-col>
-            <li-ionic4-datepicker [(ngModel)]="mydate1" [inputDateConfig]="datePickerObj"></li-ionic4-datepicker>
-          </ion-col>
-          <ion-col>
-            <li-ionic4-datepicker [(ngModel)]="mydate2" [inputDateConfig]="datePickerObj"></li-ionic4-datepicker>
-          </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+<ion-content>
+    
+    
+    <h4 class="header">Selecione o Período</h4>
+
+    <div class="container">
+        <mat-form-field color="accent">
+            <mat-label>Inherited calendar color</mat-label>
+            <input matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field color="accent">
+            <mat-label>Custom calendar color</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker2 color="primary"></mat-datepicker>
+          </mat-form-field>
+    </div>
+    
+</ion-content>
